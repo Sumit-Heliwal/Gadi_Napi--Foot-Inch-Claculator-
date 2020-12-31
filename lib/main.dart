@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:numberpicker/numberpicker.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-TextEditingController length = new TextEditingController(text: "1");
-TextEditingController width = new TextEditingController(text: "1");
-TextEditingController height = new TextEditingController(text: "1");
+int lengthnum = 1;
+int widthnum = 1;
+int heightnum = 1;
+int lengthdec = 1;
+int widthdec = 1;
+int heightdec = 1;
 TextEditingController vol = new TextEditingController(text: "1");
 
 class MyApp extends StatelessWidget {
@@ -77,7 +81,10 @@ class _MyHomePageState extends State<MyHomePage> {
             (
                 // Center is a layout widget. It takes a single child and positions it
                 // in the middle of the parent.
-                new Table(children: [
+                new Table(
+                    defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                    border: TableBorder.all(color: Colors.cyanAccent),
+                    children: [
                   TableRow(children: [
                     new Text(
                       "Length",
@@ -87,15 +94,18 @@ class _MyHomePageState extends State<MyHomePage> {
                           fontWeight: FontWeight.w200,
                           fontFamily: "Roboto"),
                     ),
-                    new TextField(
-                      controller: length,
-                      keyboardType: TextInputType.number,
-                      style: new TextStyle(
-                          fontSize: 30.0,
-                          color: const Color(0xFF000000),
-                          fontWeight: FontWeight.w200,
-                          fontFamily: "Roboto"),
-                    ),
+                    new NumberPicker.integer(
+                        minValue: 0,
+                        maxValue: 21,
+                        initialValue: lengthnum,
+                        onChanged: (newValue) =>
+                            setState(() => lengthnum = newValue)),
+                    new NumberPicker.integer(
+                        minValue: 0,
+                        maxValue: 11,
+                        initialValue: lengthdec,
+                        onChanged: (newValue) =>
+                            setState(() => {lengthdec = newValue})),
                   ]),
                   TableRow(children: [
                     new Text(
@@ -106,15 +116,18 @@ class _MyHomePageState extends State<MyHomePage> {
                           fontWeight: FontWeight.w200,
                           fontFamily: "Roboto"),
                     ),
-                    new TextField(
-                      controller: width,
-                      keyboardType: TextInputType.number,
-                      style: new TextStyle(
-                          fontSize: 30.0,
-                          color: const Color(0xFF000000),
-                          fontWeight: FontWeight.w200,
-                          fontFamily: "Roboto"),
-                    ),
+                    new NumberPicker.integer(
+                        minValue: 0,
+                        maxValue: 21,
+                        initialValue: widthnum,
+                        onChanged: (newValue) =>
+                            setState(() => widthnum = newValue)),
+                    new NumberPicker.integer(
+                        minValue: 0,
+                        maxValue: 11,
+                        initialValue: widthdec,
+                        onChanged: (newValue) =>
+                            setState(() => {widthdec = newValue})),
                   ]),
                   TableRow(children: [
                     new Text(
@@ -125,15 +138,18 @@ class _MyHomePageState extends State<MyHomePage> {
                           fontWeight: FontWeight.w200,
                           fontFamily: "Roboto"),
                     ),
-                    new TextField(
-                      controller: height,
-                      keyboardType: TextInputType.number,
-                      style: new TextStyle(
-                          fontSize: 30.0,
-                          color: const Color(0xFF000000),
-                          fontWeight: FontWeight.w200,
-                          fontFamily: "Roboto"),
-                    ),
+                    new NumberPicker.integer(
+                        minValue: 0,
+                        maxValue: 21,
+                        initialValue: heightnum,
+                        onChanged: (newValue) =>
+                            setState(() => heightnum = newValue)),
+                    new NumberPicker.integer(
+                        minValue: 0,
+                        maxValue: 11,
+                        initialValue: heightdec,
+                        onChanged: (newValue) =>
+                            setState(() => {heightdec = newValue})),
                   ]),
                 ])),
             new RaisedButton(
@@ -163,14 +179,13 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void calculate() {
-    var l = double.parse(length.text),
-        b = double.parse(width.text),
-        h = double.parse(height.text);
     setState(() {
-      vol.text = (((h.floor() + ((h - h.floor()) * 100) / 12) *
-          (l.floor() + ((l - l.floor()) * 100) / 12) *
-          (b.floor() + ((b - b.floor()) * 100) / 12))
-          .roundToDouble()).round()
+      vol.text = (((((heightnum * 12) + heightdec) *
+                      ((lengthnum * 12) + lengthdec) *
+                      ((widthnum * 12) + widthdec)) /
+                  1728)
+              .roundToDouble())
+          .round()
           .toString();
     });
 
