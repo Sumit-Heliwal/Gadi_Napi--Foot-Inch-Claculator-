@@ -6,6 +6,18 @@ void main() {
   runApp(MyApp());
 }
 
+/*
+S	S	S	S	S		U				U		M						M		I		T	T	T	T	T
+S						U				U		M	M				M	M						T
+S						U				U		M		M		M		M		I				T
+S	S	S	S	S		U				U		M			M			M		I				T
+				S		U				U		M						M		I				T
+				S		U				U		M						M		I				T
+S	S	S	S	S		U	U	U	U	U		M						M		I				T
+
+
+*/
+
 int lengthnum = 1;
 int widthnum = 1;
 int heightnum = 1;
@@ -74,6 +86,63 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
+      drawer: Drawer(
+          // elevation: 1.5,
+          child: Column(children: <Widget>[
+        Expanded(
+            child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+                child: Text(
+                  'Gadi Napi',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 30.0,
+                      color: Color(0xFFFFFFFF)),
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.blueGrey,
+                )),
+            ListTile(
+              title: Text(''),
+              //leading: Icon(Icons.shopping_cart),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text(''),
+              //leading: Icon(Icons.add_shopping_cart),
+              onTap: () {},
+            ),
+            ListTile(
+                title: Text(''),
+                //leading: Icon(Icons.exit_to_app),
+                onTap: () {})
+          ],
+        )),
+        Container(
+          color: Colors.black,
+          width: double.infinity,
+          height: 0.1,
+        ),
+        Container(
+            padding: EdgeInsets.all(10),
+            height: 100,
+            child: Text(
+              "Devloped by LazY Devlopers",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.0,
+                  color: Color(0xFF162A49)),
+            )),
+        Text(
+          'Copyright ©2020, All Rights Reserved.',
+          style: TextStyle(
+              fontWeight: FontWeight.w300,
+              fontSize: 12.0,
+              color: Color(0xFF162A49)),
+        ),
+      ])),
       body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
