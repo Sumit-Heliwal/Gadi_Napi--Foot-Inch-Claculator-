@@ -143,105 +143,108 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Color(0xFF162A49)),
         ),
       ])),
-      body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            (
-                // Center is a layout widget. It takes a single child and positions it
-                // in the middle of the parent.
-                new Table(
-                    defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-                    border: TableBorder.all(color: Colors.cyanAccent),
-                    children: [
-                  TableRow(children: [
-                    new Text(
-                      "Length",
-                      style: new TextStyle(
-                          fontSize: 30.0,
-                          color: const Color(0xFF000000),
-                          fontWeight: FontWeight.w200,
-                          fontFamily: "Roboto"),
-                    ),
-                    new NumberPicker.integer(
-                        minValue: 0,
-                        maxValue: 21,
-                        initialValue: lengthnum,
-                        onChanged: (newValue) =>
-                            setState(() => lengthnum = newValue)),
-                    new NumberPicker.integer(
-                        minValue: 0,
-                        maxValue: 11,
-                        initialValue: lengthdec,
-                        onChanged: (newValue) =>
-                            setState(() => {lengthdec = newValue})),
-                  ]),
-                  TableRow(children: [
-                    new Text(
-                      "Width",
-                      style: new TextStyle(
-                          fontSize: 30.0,
-                          color: const Color(0xFF000000),
-                          fontWeight: FontWeight.w200,
-                          fontFamily: "Roboto"),
-                    ),
-                    new NumberPicker.integer(
-                        minValue: 0,
-                        maxValue: 21,
-                        initialValue: widthnum,
-                        onChanged: (newValue) =>
-                            setState(() => widthnum = newValue)),
-                    new NumberPicker.integer(
-                        minValue: 0,
-                        maxValue: 11,
-                        initialValue: widthdec,
-                        onChanged: (newValue) =>
-                            setState(() => {widthdec = newValue})),
-                  ]),
-                  TableRow(children: [
-                    new Text(
-                      "Height",
-                      style: new TextStyle(
-                          fontSize: 30.0,
-                          color: const Color(0xFF000000),
-                          fontWeight: FontWeight.w200,
-                          fontFamily: "Roboto"),
-                    ),
-                    new NumberPicker.integer(
-                        minValue: 0,
-                        maxValue: 21,
-                        initialValue: heightnum,
-                        onChanged: (newValue) =>
-                            setState(() => heightnum = newValue)),
-                    new NumberPicker.integer(
-                        minValue: 0,
-                        maxValue: 11,
-                        initialValue: heightdec,
-                        onChanged: (newValue) =>
-                            setState(() => {heightdec = newValue})),
-                  ]),
-                ])),
-            new RaisedButton(
-                onPressed: calculate,
-                color: const Color(0xFFe0e0e0),
-                splashColor: Color(0xFFFF5555),
-                child: new Text(
-                  "Calculate",
-                  style: new TextStyle(
-                      fontSize: 30.0,
-                      color: const Color(0xFF000000),
-                      fontWeight: FontWeight.w200,
-                      fontFamily: "Roboto"),
-                )),
-            new Text(
-              "${vol.text} cft",
-              style: new TextStyle(
-                  fontSize: 30.0,
-                  color: const Color(0xFF000000),
-                  fontWeight: FontWeight.w200,
-                  fontFamily: "Roboto"),
-            )
-          ],
+      body: SingleChildScrollView(
+        child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              (
+                  // Center is a layout widget. It takes a single child and positions it
+                  // in the middle of the parent.
+                  new Table(
+                      defaultVerticalAlignment:
+                          TableCellVerticalAlignment.middle,
+                      border: TableBorder.all(color: Colors.cyanAccent),
+                      children: [
+                    TableRow(children: [
+                      new Text(
+                        "Length",
+                        style: new TextStyle(
+                            fontSize: 30.0,
+                            color: const Color(0xFF000000),
+                            fontWeight: FontWeight.w200,
+                            fontFamily: "Roboto"),
+                      ),
+                      new NumberPicker.integer(
+                          minValue: 0,
+                          maxValue: 21,
+                          initialValue: lengthnum,
+                          onChanged: (newValue) =>
+                              setState(() => lengthnum = newValue)),
+                      new NumberPicker.integer(
+                          minValue: 0,
+                          maxValue: 11,
+                          initialValue: lengthdec,
+                          onChanged: (newValue) =>
+                              setState(() => {lengthdec = newValue})),
+                    ]),
+                    TableRow(children: [
+                      new Text(
+                        "Width",
+                        style: new TextStyle(
+                            fontSize: 30.0,
+                            color: const Color(0xFF000000),
+                            fontWeight: FontWeight.w200,
+                            fontFamily: "Roboto"),
+                      ),
+                      new NumberPicker.integer(
+                          minValue: 0,
+                          maxValue: 21,
+                          initialValue: widthnum,
+                          onChanged: (newValue) =>
+                              setState(() => widthnum = newValue)),
+                      new NumberPicker.integer(
+                          minValue: 0,
+                          maxValue: 11,
+                          initialValue: widthdec,
+                          onChanged: (newValue) =>
+                              setState(() => {widthdec = newValue})),
+                    ]),
+                    TableRow(children: [
+                      new Text(
+                        "Height",
+                        style: new TextStyle(
+                            fontSize: 30.0,
+                            color: const Color(0xFF000000),
+                            fontWeight: FontWeight.w200,
+                            fontFamily: "Roboto"),
+                      ),
+                      new NumberPicker.integer(
+                          minValue: 0,
+                          maxValue: 21,
+                          initialValue: heightnum,
+                          onChanged: (newValue) =>
+                              setState(() => heightnum = newValue)),
+                      new NumberPicker.integer(
+                          minValue: 0,
+                          maxValue: 11,
+                          initialValue: heightdec,
+                          onChanged: (newValue) =>
+                              setState(() => {heightdec = newValue})),
+                    ]),
+                  ])),
+              new RaisedButton(
+                  onPressed: calculate,
+                  color: const Color(0xFFe0e0e0),
+                  splashColor: Color(0xFFFF5555),
+                  child: new Text(
+                    "Calculate",
+                    style: new TextStyle(
+                        fontSize: 30.0,
+                        color: const Color(0xFF000000),
+                        fontWeight: FontWeight.w200,
+                        fontFamily: "Roboto"),
+                  )),
+              new Text(
+                "${vol.text} cft",
+                style: new TextStyle(
+                    fontSize: 30.0,
+                    color: const Color(0xFF000000),
+                    fontWeight: FontWeight.w200,
+                    fontFamily: "Roboto"),
+              )
+            ],
+          ),
         ),
       ),
     );
